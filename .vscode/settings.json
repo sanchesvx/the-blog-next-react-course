@@ -1,18 +1,17 @@
 {
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "breadcrumbs.enabled": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "debug.console.fontSize": 14,
   "terminal.integrated.fontSize": 14,
   "editor.glyphMargin": false,
   "workbench.activityBar.location": "default",
   "editor.lineNumbers": "on",
-  "files.eol": "\n", // Final de linha sempre será LF
+  "files.eol": "\n",
   "workbench.editor.labelFormat": "short",
   "editor.tabSize": 2,
   "explorer.compactFolders": false,
 
-  // 🛠 Formatação e Lint
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
 
