@@ -10,6 +10,7 @@ export async function PostsList() {
     <div className='grid grid-cols-1  gap-8 sm:grid-cols-2 lg:grid-cols-3'>
       {posts.map(post => {
         const postLink = `/post/${post.slug}`;
+
         return (
           <div className='flex flex-col gap-4 group' key={post.id}>
             <PostCoverImage
@@ -30,7 +31,6 @@ export async function PostsList() {
                 dateTime={post.createdAt}
                 title={formatDistanceToNow(post.createdAt)}
               >
-                {post.createdAt}
                 {formatDatetime(post.createdAt)}
               </time>
 
