@@ -21,16 +21,9 @@ export class JsonPostRepository implements PostRepository {
   }
 
   private async readFromDisk(): Promise<PostModel[]> {
-    console.log('CAMINHO JSON:', JSON_POSTS_FILE_PATH);
-
     const jsonContent = await readFile(JSON_POSTS_FILE_PATH, 'utf-8');
-    console.log('JSON PURO:', jsonContent);
-
     const parsedJson = JSON.parse(jsonContent);
     const { posts } = parsedJson;
-
-    console.log('POSTS CARREGADOS:', posts);
-
     return posts;
   }
 
@@ -66,4 +59,3 @@ export class JsonPostRepository implements PostRepository {
     return post;
   }
 }
-export const postRepository: PostRepository = new JsonPostRepository();
