@@ -1,8 +1,8 @@
 import { revalidateExampleAction } from '@/actions/revalidate-example';
-import { formatHour } from '@/utils/format-datetime';
+import { formatHourCached } from '@/utils/format-datetime';
 
-export const dynamic = 'force-static';
-export const revalidate = 30;
+// export const dynamic = 'force-static';
+// export const revalidate = 30;
 
 export default async function ExemploDynamicPage({
   params,
@@ -10,12 +10,12 @@ export default async function ExemploDynamicPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const hour = formatHour(Date.now());
+  const hour = await formatHourCached();
 
   return (
     <main className='min-h-[600px] text-4xl font-bold'>
       <div>
-        Hora: {hour} (ID: {id})
+        Hora: {hour} | (ID: {id})
       </div>
 
       <form className='py-16' action={revalidateExampleAction}>
