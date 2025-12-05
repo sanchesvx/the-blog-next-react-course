@@ -9,42 +9,50 @@ import { ImageUploader } from '../ImageUploader';
 
 export function ManagePostForm() {
   const [contentValue, setContentValue] = useState('');
+
   return (
     <form action='' className='mb-16'>
       <div className='flex flex-col gap-6'>
         <InputText
-          labelText='Nome'
-          placeholder='Digite seu nome'
-          type='password'
-        />
-
-        <ImageUploader />
-
-        <InputText labelText='Sobrenome' placeholder='Digite seu sobrenome' />
-
-        <InputCheckbox labelText='Sobrenome' />
-
-        <InputText
-          disabled
-          labelText='Sobrenome'
-          placeholder='Digite seu sobrenome'
-          defaultValue='Olá mundo'
-        />
-        <InputText
-          disabled
-          labelText='Sobrenome'
-          placeholder='Digite seu sobrenome'
-        />
-        <InputText
-          labelText='Sobrenome'
-          placeholder='Digite seu sobrenome'
+          labelText='ID'
+          name='id'
+          placeholder='ID gerado automaticamente'
+          type='text'
+          defaultValue={''}
           readOnly
         />
+
         <InputText
-          labelText='Sobrenome'
-          placeholder='Digite seu sobrenome'
-          defaultValue='Olá mundo'
+          labelText='Slug'
+          name='slug'
+          placeholder='Slug gerada automaticamente'
+          type='text'
+          defaultValue={''}
           readOnly
+        />
+
+        <InputText
+          labelText='Autor'
+          name='author'
+          placeholder='Digite o nome do autor'
+          type='text'
+          defaultValue={''}
+        />
+
+        <InputText
+          labelText='Título'
+          name='title'
+          placeholder='Digite o título'
+          type='text'
+          defaultValue={''}
+        />
+
+        <InputText
+          labelText='Excerto'
+          name='excerpt'
+          placeholder='Digite o resumo'
+          type='text'
+          defaultValue={''}
         />
 
         <MarkdownEditor
@@ -54,6 +62,18 @@ export function ManagePostForm() {
           value={contentValue}
           setValue={setContentValue}
         />
+
+        <ImageUploader />
+
+        <InputText
+          labelText='URL da imagem de capa'
+          name='coverImageUrl'
+          placeholder='Digite a url da imagem'
+          type='text'
+          defaultValue={''}
+        />
+
+        <InputCheckbox labelText='Publicar?' name='published' type='checkbox' />
 
         <div className='mt-4'>
           <Button type='submit'>Enviar</Button>
