@@ -7,7 +7,9 @@ import {
 } from '@/dto/post/dto';
 import { PostUpdateSchema } from '@/lib/post/validations';
 import { postRepository } from '@/repositories/post';
+import { asyncDelay } from '@/utils/async-delay';
 import { getZodErrorMessages } from '@/utils/is-url-or-relative-path';
+import { makeRandomString } from '@/utils/make-random-string';
 import { makeSlugFromText } from '@/utils/make-slug-from-text';
 import { revalidateTag } from 'next/cache';
 import { v4 as uuidV4 } from 'uuid';
@@ -15,7 +17,7 @@ import { v4 as uuidV4 } from 'uuid';
 type UpdatePostActionState = {
   formState: PublicPost;
   errors: string[];
-  success?: true;
+  success?: string;
 };
 
 export async function updatePostAction(
@@ -23,6 +25,8 @@ export async function updatePostAction(
   formData: FormData,
 ): Promise<UpdatePostActionState> {
   // TODO: verificar se o usuário tá logado
+
+  await asyncDelay(3000);
 
   if (!(formData instanceof FormData)) {
     return {
@@ -81,6 +85,6 @@ export async function updatePostAction(
   return {
     formState: makePublicPostFromDb(post),
     errors: [],
-    success: true,
+    success: makeRandomString(),
   };
 }
